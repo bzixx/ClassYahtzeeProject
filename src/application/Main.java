@@ -6,9 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -29,11 +28,15 @@ public class Main extends Application {
 			HBox middleScorePane = new HBox();
 			HBox rightRollPane = new HBox();
 			
-			Rectangle leftDicePaneRect = new Rectangle(333,562);
+			Pane leftDicePaneRect = new Pane();
+			leftDicePaneRect.setMinWidth(333);
+			leftDicePaneRect.setMinHeight(562);
+			
+			
 			Rectangle middleScorePaneRect = new Rectangle(334,0,333,562);
 			Rectangle rightRollPaneRect = new Rectangle(667,0,333,562);
 			
-			Rectangle die1 = new Rectangle(50,50,100,50);
+			Button die1 = new Button(50,50,100,50);
 			Rectangle die2 = new Rectangle(50,50);
 			Rectangle die3 = new Rectangle(50,50);
 			Rectangle die4 = new Rectangle(50,50);
@@ -62,11 +65,11 @@ public class Main extends Application {
 			
 			leftDicePane.getChildren().add(leftDicePaneRect);
 
-			leftDicePane.getChildren().add(die1);
-			leftDicePane.getChildren().add(die2);
-			leftDicePane.getChildren().add(die3);
-			leftDicePane.getChildren().add(die4);
-			leftDicePane.getChildren().add(die5);
+			leftDicePaneRect.getChildren().add(die1);
+			leftDicePaneRect.getChildren().add(die2);
+			leftDicePaneRect.getChildren().add(die3);
+			leftDicePaneRect.getChildren().add(die4);
+			leftDicePaneRect.getChildren().add(die5);
 			
 			middleScorePane.getChildren().add(middleScorePaneRect);
 			
