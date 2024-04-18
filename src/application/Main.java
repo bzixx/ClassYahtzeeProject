@@ -36,19 +36,19 @@ public class Main extends Application {
 			Rectangle middleScorePaneRect = new Rectangle(334,0,333,562);
 			Rectangle rightRollPaneRect = new Rectangle(667,0,333,562);
 			
-			Button die1 = new Button(50,50,100,50);
-			Rectangle die2 = new Rectangle(50,50);
-			Rectangle die3 = new Rectangle(50,50);
-			Rectangle die4 = new Rectangle(50,50);
-			Rectangle die5 = new Rectangle(50,50);
+			GUIdie die1 = new GUIdie();
+			GUIdie die2 = new GUIdie();
+			GUIdie die3 = new GUIdie();
+			GUIdie die4 = new GUIdie();
+			GUIdie die5 = new GUIdie();
 			
 			
 			
-			die1.setFill(Color.BLUE);
+			/*die1.setFill(Color.BLUE);
 			die2.setFill(Color.GREEN);
 			die3.setFill(Color.YELLOW);
 			die4.setFill(Color.BROWN);
-			die5.setFill(Color.BLUE);
+			die5.setFill(Color.BLUE);*/
 			
 			TextArea upperTextArea = new TextArea();
 			TextArea lowerTextArea = new TextArea();
