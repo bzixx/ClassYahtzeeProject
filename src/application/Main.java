@@ -25,46 +25,20 @@ public class Main extends Application {
 
 			//mainThreeDivs.setSpacing(50);
 			
-			HBox leftDicePane = new HBox();
-			HBox middleScorePane = new HBox();
-			HBox rightRollPane = new HBox();
+			LeftDicePane leftDicePane = new LeftDicePane();
+			middleScorePane middleScorePane = new middleScorePane();
+			rightRollPane rightRollPane = new rightRollPane();
 			
 			Pane leftDicePaneRect = new Pane();
-			leftDicePaneRect.setMinWidth(333);
-			leftDicePaneRect.setMinHeight(562);
-			
-			
-			Rectangle middleScorePaneRect = new Rectangle(334,0,333,562);
-			Rectangle rightRollPaneRect = new Rectangle(667,0,333,562);
-			
-			VBox diceVBox = new VBox();
-			
-			
-			GUIdie die1 = new GUIdie("String Constructor");
-			GUIdie die2 = new GUIdie();
-			GUIdie die3 = new GUIdie();
-			GUIdie die4 = new GUIdie();
-			GUIdie die5 = new GUIdie();
-			
-			diceVBox.getChildren().add(die1);
-			diceVBox.getChildren().add(die2);
-			diceVBox.getChildren().add(die3);
-			diceVBox.getChildren().add(die4);
-			diceVBox.getChildren().add(die5);
 			
 			//diceVBox.setPadding(Insets(15));
 
-			
-			
-			
 			/*die1.setFill(Color.BLUE);
 			die2.setFill(Color.GREEN);
 			die3.setFill(Color.YELLOW);
 			die4.setFill(Color.BROWN);
 			die5.setFill(Color.BLUE);*/
 			
-			TextArea upperTextArea = new TextArea();
-			TextArea lowerTextArea = new TextArea();
 
 			Button rollButton = new Button("Roll!");
 			TextArea remainingRolls = new TextArea();
@@ -76,22 +50,20 @@ public class Main extends Application {
 			mainThreeDivs.getChildren().add(middleScorePane);
 			mainThreeDivs.getChildren().add(rightRollPane);
 			
-			leftDicePane.getChildren().add(leftDicePaneRect);
+			//leftDicePane.getChildren().add(leftDicePaneRect);
 
-			leftDicePaneRect.getChildren().add(diceVBox);
+			//leftDicePaneRect.getChildren().add(diceVBox);
 			
-			middleScorePane.getChildren().add(middleScorePaneRect);
+			//middleScorePane.getChildren().add(middleScorePaneRect);
 			
-			middleScorePane.getChildren().add(upperTextArea);
-			middleScorePane.getChildren().add(lowerTextArea);
 			
-			rightRollPane.getChildren().add(rightRollPaneRect);
+			//rightRollPane.getChildren().add(rightRollPaneRect);
 
 			rightRollPane.getChildren().add(rollButton);
 			rightRollPane.getChildren().add(remainingRolls);
 			rightRollPane.getChildren().add(highScores);
 			
-			leftDicePane.setSpacing(15);
+			//leftDicePane.setSpacing(15);
 			
 			
 			//leftDicePane.setPrefWidth((primaryStage.getWidth() / 3));
