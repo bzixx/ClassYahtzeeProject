@@ -7,6 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -36,11 +37,23 @@ public class Main extends Application {
 			Rectangle middleScorePaneRect = new Rectangle(334,0,333,562);
 			Rectangle rightRollPaneRect = new Rectangle(667,0,333,562);
 			
-			GUIdie die1 = new GUIdie();
+			VBox diceVBox = new VBox();
+			
+			
+			GUIdie die1 = new GUIdie("String Constructor");
 			GUIdie die2 = new GUIdie();
 			GUIdie die3 = new GUIdie();
 			GUIdie die4 = new GUIdie();
 			GUIdie die5 = new GUIdie();
+			
+			diceVBox.getChildren().add(die1);
+			diceVBox.getChildren().add(die2);
+			diceVBox.getChildren().add(die3);
+			diceVBox.getChildren().add(die4);
+			diceVBox.getChildren().add(die5);
+			
+			//diceVBox.setPadding(Insets(15));
+
 			
 			
 			
@@ -65,11 +78,7 @@ public class Main extends Application {
 			
 			leftDicePane.getChildren().add(leftDicePaneRect);
 
-			leftDicePaneRect.getChildren().add(die1);
-			leftDicePaneRect.getChildren().add(die2);
-			leftDicePaneRect.getChildren().add(die3);
-			leftDicePaneRect.getChildren().add(die4);
-			leftDicePaneRect.getChildren().add(die5);
+			leftDicePaneRect.getChildren().add(diceVBox);
 			
 			middleScorePane.getChildren().add(middleScorePaneRect);
 			

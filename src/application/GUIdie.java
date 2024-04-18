@@ -20,7 +20,7 @@ public class GUIdie extends Button{
 		super(userText);
 		buttonText = userText;
 		
-		this.get
+		//this.sethei
 		
 	}
 	
