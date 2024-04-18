@@ -28,6 +28,15 @@ public class LeftDicePane extends Pane{
 		diceVBox.getChildren().add(die5);
 		
 		this.getChildren().add(diceVBox);
+		
+		//diceVBox.setPadding(Insets(15));
+		
+		/*die1.setFill(Color.BLUE);
+		die2.setFill(Color.GREEN);
+		die3.setFill(Color.YELLOW);
+		die4.setFill(Color.BROWN);
+		die5.setFill(Color.BLUE);*/
+
 
 		
 	}

@@ -5,7 +5,14 @@ import javafx.scene.layout.Pane;
 
 public class middleScorePane extends Pane{
 	
-	TextArea upperTextArea = new TextArea();
-	TextArea lowerTextArea = new TextArea();
+	public middleScorePane() {
+		this.setMinWidth(333);
+		this.setMinHeight(562);
+		
+		this.setStyle("-fx-background-color: Green;");	
+		
+		TextArea upperTextArea = new TextArea();
+		TextArea lowerTextArea = new TextArea();
+	}
 
 }

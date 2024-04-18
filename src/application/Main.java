@@ -29,45 +29,23 @@ public class Main extends Application {
 			middleScorePane middleScorePane = new middleScorePane();
 			rightRollPane rightRollPane = new rightRollPane();
 			
-			Pane leftDicePaneRect = new Pane();
-			
-			//diceVBox.setPadding(Insets(15));
-
-			/*die1.setFill(Color.BLUE);
-			die2.setFill(Color.GREEN);
-			die3.setFill(Color.YELLOW);
-			die4.setFill(Color.BROWN);
-			die5.setFill(Color.BLUE);*/
-			
-
-			Button rollButton = new Button("Roll!");
-			TextArea remainingRolls = new TextArea();
-			TextArea highScores = new TextArea();
-			
-			root.getChildren().add(mainThreeDivs);
-			
 			mainThreeDivs.getChildren().add(leftDicePane);
 			mainThreeDivs.getChildren().add(middleScorePane);
 			mainThreeDivs.getChildren().add(rightRollPane);
 			
+			
+			
+			root.getChildren().add(mainThreeDivs);
+			
+
+			
 			//leftDicePane.getChildren().add(leftDicePaneRect);
 
 			//leftDicePaneRect.getChildren().add(diceVBox);
-			
 			//middleScorePane.getChildren().add(middleScorePaneRect);
-			
-			
 			//rightRollPane.getChildren().add(rightRollPaneRect);
-
-			rightRollPane.getChildren().add(rollButton);
-			rightRollPane.getChildren().add(remainingRolls);
-			rightRollPane.getChildren().add(highScores);
-			
 			//leftDicePane.setSpacing(15);
-			
-			
 			//leftDicePane.setPrefWidth((primaryStage.getWidth() / 3));
-			
 			//Text hello = new Text(50,20, "Hello, JavaFX!");
 			//Text question = new Text(120,80,"How's it going?");
 			//Group root = new Group(hello, question);
