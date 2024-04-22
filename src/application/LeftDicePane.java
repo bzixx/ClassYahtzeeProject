@@ -1,9 +1,8 @@
 package application;
 
+import javafx.geometry.Insets;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class LeftDicePane extends Pane{
 	
@@ -22,6 +21,9 @@ public class LeftDicePane extends Pane{
 		GUIdie die5 = new GUIdie();
 		
 		VBox diceVBox = new VBox();
+		
+		diceVBox.setPadding(new Insets(10.0));
+		diceVBox.setSpacing(10);
 		
 		diceVBox.getChildren().add(die1);
 		diceVBox.getChildren().add(die2);
