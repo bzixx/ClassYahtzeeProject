@@ -7,6 +7,8 @@ import javafx.scene.shape.Rectangle;
 
 public class LeftDicePane extends Pane{
 	
+	//Needs a Array of GUIDice setup.
+	
 	public LeftDicePane() {
 		this.setMinWidth(333);
 		this.setMinHeight(562);
@@ -36,6 +38,8 @@ public class LeftDicePane extends Pane{
 		die3.setFill(Color.YELLOW);
 		die4.setFill(Color.BROWN);
 		die5.setFill(Color.BLUE);*/
+		
+		//Needs a method to return the total of the Array of GUIDice
 
 
 		

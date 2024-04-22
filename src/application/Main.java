@@ -37,6 +37,32 @@ public class Main extends Application {
 			
 			root.getChildren().add(mainThreeDivs);
 			
+			//FIXME does not work reversed.
+			middleScorePane.setAces(3);
+			middleScorePane.setTwos(6);
+			middleScorePane.setThrees(9);
+			middleScorePane.setFours(12);
+			middleScorePane.setFives(15);
+			middleScorePane.setSixes(18);
+			middleScorePane.setUpperBouns();
+			middleScorePane.updateUpperSubTotal();
+
+
+			middleScorePane.setThreeOfAKind(12);
+			middleScorePane.setFourOfAKind(12);
+			middleScorePane.setFullHouse();
+			middleScorePane.setSmStraight();
+			middleScorePane.setLgStraight();
+			middleScorePane.setYahtzee();
+			middleScorePane.setChance(12);
+			middleScorePane.setYahtzeeBouns();
+			middleScorePane.setYahtzeeBouns();
+			
+			middleScorePane.updateLowerSubTotal();
+			
+			middleScorePane.updateGameTotal();
+
+			
 
 			
 			//leftDicePane.getChildren().add(leftDicePaneRect);
