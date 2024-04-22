@@ -27,7 +27,7 @@ public class GUIdie extends Button{
     private Image side4 = new Image(getClass().getResourceAsStream("DiePics/Die4.jpg"));
     private Image side5 = new Image(getClass().getResourceAsStream("DiePics/Die5.jpg"));
     private Image side6 = new Image(getClass().getResourceAsStream("DiePics/Die6.jpg"));
-    private Image side1L = new Image(getClass().getResourceAsStream("DiePics/Die1Locked.jpeg"));
+    private Image side1L = new Image(getClass().getResourceAsStream("DiePics/Die1Locked.jpg"));
     private Image side2L = new Image(getClass().getResourceAsStream("DiePics/Die2Locked.jpg"));
     private Image side3L = new Image(getClass().getResourceAsStream("DiePics/Die3Locked.jpg"));
     private Image side4L = new Image(getClass().getResourceAsStream("DiePics/Die4Locked.jpg"));

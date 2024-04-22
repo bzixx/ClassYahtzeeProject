@@ -11,7 +11,7 @@ public class rightRollPane extends Pane{
 		this.setMinWidth(333);
 		this.setMinHeight(562);
 		
-		this.setStyle("-fx-background-color: Red;");	
+		this.setStyle("-fx-background-color: #AA45F6;");	
 
 	
 		

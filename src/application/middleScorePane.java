@@ -1,6 +1,6 @@
 package application;
 
-import javafx.scene.Node;
+import javafx.geometry.Insets;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -53,7 +53,7 @@ public class middleScorePane extends Pane{
 		this.setMinWidth(333);
 		this.setMinHeight(562);
 		
-		this.setStyle("-fx-background-color: Green;");	
+		this.setStyle("-fx-background-color: white;");	
 		
 		upperTextArea = new VBox();
 		
@@ -79,6 +79,7 @@ public class middleScorePane extends Pane{
 		lowerTextArea.getChildren().add(lowerSubTotalStr);
 
 		VBox ScoreBoardVBox = new VBox();
+		ScoreBoardVBox.setPadding(new Insets(10.0));
 		
 		ScoreBoardVBox.getChildren().add(upperTextArea);
 		ScoreBoardVBox.getChildren().add(lowerTextArea);		
