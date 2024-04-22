@@ -61,6 +61,8 @@ public class Main extends Application {
 			middleScorePane.updateLowerSubTotal();
 			
 			middleScorePane.updateGameTotal();
+			
+			System.out.println(middleScorePane.getGameTotal());
 
 			
 

@@ -198,9 +198,15 @@ public class middleScorePane extends Pane{
 	 */
 	public void updateUpperSubTotal() {
 		//FIXME need to put if statement for repeat calls.
-		upperSubTotal = getAces() + getTwos() + getThrees() + getFours() + getFives() + getSixes() + getUpperBouns();
-		String tempString = upperSubTotalStr.getText();
-		upperSubTotalStr.setText(tempString + upperSubTotal + "\n");
+		if (upperSubTotal == (getAces() + getTwos() + getThrees() + getFours() + getFives() + getSixes() + getUpperBouns())) {
+
+		}
+		else {
+			upperSubTotal = getAces() + getTwos() + getThrees() + getFours() + getFives() + getSixes() + getUpperBouns();
+			String tempString = upperSubTotalStr.getText();
+			upperSubTotalStr.setText(tempString + upperSubTotal + "\n");
+		}
+
 	}
 
 	/**
@@ -371,15 +377,21 @@ public class middleScorePane extends Pane{
 	 * @param lowerSubTotoal the lowerSubTotoal to set
 	 */
 	public void updateLowerSubTotal() {
-		lowerSubTotal = getThreeOfAKind() + getFourOfAKind() + getFullHouse() + getSmStraight() + getLgStraight() + getYahtzee() + getChance() +getYahtzeeBouns();
-		String tempString = lowerSubTotalStr.getText();
-		lowerSubTotalStr.setText(tempString+ lowerSubTotal +"\n");
+		if (lowerSubTotal == (getThreeOfAKind() + getFourOfAKind() + getFullHouse() + getSmStraight() + getLgStraight() + getYahtzee() + getChance() +getYahtzeeBouns())) {
+			
+		}
+		else {
+			lowerSubTotal = getThreeOfAKind() + getFourOfAKind() + getFullHouse() + getSmStraight() + getLgStraight() + getYahtzee() + getChance() +getYahtzeeBouns();
+			String tempString = lowerSubTotalStr.getText();
+			lowerSubTotalStr.setText(tempString+ lowerSubTotal +"\n");
+		}
 	}
 
 	/**
 	 * @return the gameTotal
 	 */
 	public int getGameTotal() {
+		updateGameTotal();
 		return GameTotal;
 	}
 
@@ -387,11 +399,16 @@ public class middleScorePane extends Pane{
 	 * @param gameTotal the gameTotal to set
 	 */
 	public void updateGameTotal() {
-		updateUpperSubTotal();
-		updateLowerSubTotal();
-		GameTotal = getUpperSubTotal() + getLowerSubTotal();
-		String tempString = GameTotalStr.getText();
-		GameTotalStr.setText(tempString+ GameTotal +"\n");
+		if (GameTotal == (getUpperSubTotal() + getLowerSubTotal())) {
+			
+		}
+		else {
+			updateUpperSubTotal();
+			updateLowerSubTotal();
+			GameTotal = getUpperSubTotal() + getLowerSubTotal();
+			String tempString = GameTotalStr.getText();
+			GameTotalStr.setText(tempString+ GameTotal +"\n");
+		}
 		
 	}
 
