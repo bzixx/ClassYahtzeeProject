@@ -15,7 +15,7 @@ public class LeftDicePane extends Pane{
 		
 		this.setStyle("-fx-background-color: Blue;");	
 
-		GUIdie die1 = new GUIdie("String Constructor");
+		GUIdie die1 = new GUIdie();
 		GUIdie die2 = new GUIdie();
 		GUIdie die3 = new GUIdie();
 		GUIdie die4 = new GUIdie();

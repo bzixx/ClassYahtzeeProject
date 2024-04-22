@@ -38,7 +38,7 @@ public class Main extends Application {
 			root.getChildren().add(mainThreeDivs);
 			
 			//TESTING ONLY
-			/*middleScorePane.setAces(3);
+			middleScorePane.setAces(3);
 			middleScorePane.setTwos(6);
 			middleScorePane.setThrees(9);
 			middleScorePane.setFours(12);
@@ -60,7 +60,7 @@ public class Main extends Application {
 			
 			middleScorePane.updateLowerSubTotal();
 			
-			middleScorePane.updateGameTotal();*/
+			middleScorePane.updateGameTotal();
 
 			
 
