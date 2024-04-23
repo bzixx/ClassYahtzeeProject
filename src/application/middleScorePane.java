@@ -1,6 +1,10 @@
 package application;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -46,8 +50,31 @@ public class middleScorePane extends Pane{
 	private int GameTotal;
 	private Text GameTotalStr = new Text("Game Total:     | ");
 	
-	VBox upperTextArea;
-	VBox lowerTextArea;
+	private HBox primeMiddleHBox;
+	
+	private VBox upperTextArea;
+	private VBox upperButtonArea;
+	private VBox lowerTextArea;
+	private VBox lowerButtonArea;
+	
+	private VBox ScoreBoardVBox;
+	private VBox scoreButtonVBox;
+	
+	private Button scoreAces = new Button("Score Aces");
+	private Button scoreTwos = new Button("Score Two");
+	private Button scoreThrees = new Button("Score Three");
+	private Button scoreFours = new Button("Score Four");
+	private Button scoreFives = new Button("Score Fives");
+	private Button scoreSixes = new Button("Score Sixes");
+
+	private Button scoreThreeOfAKind = new Button("Score Three of a Kind");
+	private Button scoreFourOfAKind = new Button("Score Four of a Kind");
+	private Button scoreFullHouse = new Button("Score Full House");
+	private Button scoreSmStraight = new Button("Score Small Staight");
+	private Button scoreLgStraight = new Button("Score Large Staight");
+	private Button scoreYahtzee = new Button("Score Yahtzee");
+	private Button scoreChance = new Button("Score Chance");
+
 	
 	public middleScorePane() {
 		this.setMinWidth(333);
@@ -55,8 +82,37 @@ public class middleScorePane extends Pane{
 		
 		this.setStyle("-fx-background-color: white;");	
 		
-		upperTextArea = new VBox();
 		
+		/*scoreTwos.setOnAction(scoreTwos::processAcesScore);
+		scoreThrees.setOnAction(scoreThrees::processAcesScore);
+		scoreFours.setOnAction(scoreFours::processAcesScore);
+		scoreFives.setOnAction(scoreFives::processAcesScore);
+		scoreSixes.setOnAction(scoreSixes::processAcesScore);
+
+		scoreThreeOfAKind.setOnAction(scoreThreeOfAKind::processAcesScore);
+		scoreFourOfAKind.setOnAction(scoreFourOfAKind::processAcesScore);
+		scoreFullHouse.setOnAction(scoreFullHouse::processAcesScore);
+		scoreSmStraight.setOnAction(scoreSmStraight::processAcesScore);
+		scoreLgStraight.setOnAction(scoreLgStraight::processAcesScore);
+		scoreYahtzee.setOnAction(scoreYahtzee::processAcesScore);
+		scoreChance.setOnAction(scoreChance::processAcesScore);*/
+
+		
+		primeMiddleHBox = new HBox();
+		
+		
+		upperTextArea = new VBox();
+		upperButtonArea = new VBox();
+		upperButtonArea.setSpacing(10);
+
+		
+		upperButtonArea.getChildren().add(scoreAces);
+		upperButtonArea.getChildren().add(scoreTwos);
+		upperButtonArea.getChildren().add(scoreThrees);
+		upperButtonArea.getChildren().add(scoreFours);
+		upperButtonArea.getChildren().add(scoreFives);
+		upperButtonArea.getChildren().add(scoreSixes);
+
 		upperTextArea.getChildren().add(AcesStr);
 		upperTextArea.getChildren().add(TwosStr);
 		upperTextArea.getChildren().add(ThreesStr);
@@ -67,6 +123,16 @@ public class middleScorePane extends Pane{
 		upperTextArea.getChildren().add(upperSubTotalStr);
 		
 		lowerTextArea = new VBox();
+		lowerButtonArea = new VBox();
+		lowerButtonArea.setSpacing(10);
+
+		lowerButtonArea.getChildren().add(scoreThreeOfAKind);
+		lowerButtonArea.getChildren().add(scoreFourOfAKind);
+		lowerButtonArea.getChildren().add(scoreFullHouse);
+		lowerButtonArea.getChildren().add(scoreSmStraight);
+		lowerButtonArea.getChildren().add(scoreLgStraight);
+		lowerButtonArea.getChildren().add(scoreYahtzee);
+		lowerButtonArea.getChildren().add(scoreChance);
 		
 		lowerTextArea.getChildren().add(ThreeOfAKindStr);
 		lowerTextArea.getChildren().add(FourOfAKindStr);
@@ -78,14 +144,28 @@ public class middleScorePane extends Pane{
 		lowerTextArea.getChildren().add(ChanceStr);
 		lowerTextArea.getChildren().add(lowerSubTotalStr);
 
-		VBox ScoreBoardVBox = new VBox();
+		ScoreBoardVBox = new VBox();
+		scoreButtonVBox = new VBox();
+		scoreButtonVBox.setSpacing(10);
+		
 		ScoreBoardVBox.setPadding(new Insets(10.0));
+		scoreButtonVBox.setPadding(new Insets(10.0));
+		
+		scoreButtonVBox.getChildren().add(upperButtonArea);
+		scoreButtonVBox.getChildren().add(lowerButtonArea);
 		
 		ScoreBoardVBox.getChildren().add(upperTextArea);
 		ScoreBoardVBox.getChildren().add(lowerTextArea);		
 		ScoreBoardVBox.getChildren().add(GameTotalStr);		
 		
-		this.getChildren().add(ScoreBoardVBox);
+		primeMiddleHBox.getChildren().add(ScoreBoardVBox);
+		primeMiddleHBox.getChildren().add(scoreButtonVBox);
+		
+		this.getChildren().add(primeMiddleHBox);
+				
+		scoreAces.setOnAction(processAcesScore);
+		
+
 		
 	}
 
@@ -412,5 +492,13 @@ public class middleScorePane extends Pane{
 		}
 		
 	}
+	
+	
+	EventHandler<ActionEvent> processAcesScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			System.out.println("Button Pushed");
+		}
+		
+	};
 
 }

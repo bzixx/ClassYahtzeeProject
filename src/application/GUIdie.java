@@ -36,7 +36,7 @@ public class GUIdie extends Button{
     
     //Create ArrayLists to hold both unlocked and locked images. 
     private ArrayList<Image> unlockedDice = new ArrayList<Image>(6);
-    private ArrayList<Image> lockedDice = new ArrayList<Image>(6);
+    protected ArrayList<Image> lockedDice = new ArrayList<Image>(6);
     
     //Private Bool to see if GUIdie was locked or not. 
     private boolean locked;
