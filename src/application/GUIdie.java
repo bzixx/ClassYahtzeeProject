@@ -36,7 +36,7 @@ public class GUIdie extends Button{
     
     //Create ArrayLists to hold both unlocked and locked images. 
     private ArrayList<Image> unlockedDice = new ArrayList<Image>(6);
-    protected ArrayList<Image> lockedDice = new ArrayList<Image>(6);
+    private ArrayList<Image> lockedDice = new ArrayList<Image>(6);
     
     //Private Bool to see if GUIdie was locked or not. 
     private boolean locked;
@@ -131,7 +131,10 @@ public class GUIdie extends Button{
 	 * @param event The action of the Button press for the GUIdie
 	 */
 	public void processButtonPress(ActionEvent event) {
-		if(locked == false) {
+		if(rightRollPane.rollCount == 3) {
+			
+		}
+		else if(locked == false) {
 			locked = true;
 		    currentDieSide.setImage(lockedDice.get(currentValue-1));
 		    //TODO REMEBER TO COMMENT OUT SYSTEM.OUT.PRINT

@@ -1,11 +1,28 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class LeftDicePane extends Pane{
+	
+	private VBox diceVBox;
+	
+	
+	//Created New GLobal GUI dies that can then be added to the Array List and Shipped off to other classes when needed. 
+	private GUIdie die1;
+	private GUIdie die2;
+	private GUIdie die3;
+	private GUIdie die4;
+	private GUIdie die5;
+	
+	
+	//Added Array List to Hold the Dice and Made it static so we can reference the Dice Object from Anywhere. 
+	protected static ArrayList<GUIdie> Dice = new ArrayList<GUIdie>();	
+
 	
 	//Needs a Array of GUIDice setup.
 	
@@ -15,23 +32,30 @@ public class LeftDicePane extends Pane{
 		
 		this.setStyle("-fx-background-color: Red;");	
 
-		GUIdie die1 = new GUIdie();
+		die1 = new GUIdie();
 		die1.setMinWidth(100);
 		die1.setMinHeight(100);
-		GUIdie die2 = new GUIdie();
+		die2 = new GUIdie();
 		die2.setMinWidth(100);
 		die2.setMinHeight(100);
-		GUIdie die3 = new GUIdie();
+		die3 = new GUIdie();
 		die3.setMinWidth(100);
 		die3.setMinHeight(100);
-		GUIdie die4 = new GUIdie();
+		die4 = new GUIdie();
 		die4.setMinWidth(100);
 		die4.setMinHeight(100);
-		GUIdie die5 = new GUIdie();
+		die5 = new GUIdie();
 		die5.setMinWidth(100);
 		die5.setMinHeight(100);
 		
-		VBox diceVBox = new VBox();
+		Dice.add(die1);
+		Dice.add(die2);
+		Dice.add(die3);
+		Dice.add(die4);
+		Dice.add(die5);
+
+		
+		diceVBox = new VBox();
 		
 //		diceVBox.setPadding(new Insets(10.0));
 		diceVBox.setPadding(new Insets( 10.0,  115.0,  10.0,  115.0));
@@ -60,8 +84,10 @@ public class LeftDicePane extends Pane{
 		
 		//Needs a method to return the total of the Array of GUIDice
 
-
-		
+	}
+	
+	public VBox getScoreDice() {
+		return diceVBox;
 	}
 
 }

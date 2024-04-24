@@ -1,28 +1,41 @@
 package application;
 
 import javafx.event.ActionEvent;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+
 public class middleScorePane extends Pane{
 	
 	private int Aces;
 	private Text AcesStr = new Text( "Aces:      | ");
+	private final String ACESSTR =  "Aces:      | ";
 	private int Twos;
 	private Text TwosStr = new Text("Twos:      | ");
+	private final String TWOSSTR =  "Twos:      | ";
 	private int Threes;
 	private Text ThreesStr = new Text("Threes:    | ");
+	private final String THREESSTR =  "Threes:    | ";
+
 	private int Fours;
 	private Text FoursStr = new Text("Fours:     | ");
+	private final String FOURSSTR =  "Fours:     | ";
+
 	private int Fives;
 	private Text FivesStr = new Text("Fives:     | ");
+	private final String FIVESSTR =  "Fives:     | ";
+
 	private int Sixes;	
-	private Text SixesStr = new Text("Sixes:     | ");	
+	private Text SixesStr = new Text("Sixes:     | ");
+	private final String SIXESSTR =  "Sixes:     | ";
+
 	private int upperSubTotal;
 	private Text upperSubTotalStr = new Text("Upper SubTotal:     | ");
 	private int UpperBouns; 
@@ -100,6 +113,8 @@ public class middleScorePane extends Pane{
 		
 		primeMiddleHBox = new HBox();
 		
+		primeMiddleHBox.setPadding(new Insets(10, 10, 10, 10));
+		
 		
 		upperTextArea = new VBox();
 		upperButtonArea = new VBox();
@@ -112,6 +127,9 @@ public class middleScorePane extends Pane{
 		upperButtonArea.getChildren().add(scoreFours);
 		upperButtonArea.getChildren().add(scoreFives);
 		upperButtonArea.getChildren().add(scoreSixes);
+		
+		upperButtonArea.setAlignment(Pos.BASELINE_RIGHT);
+
 
 		upperTextArea.getChildren().add(AcesStr);
 		upperTextArea.getChildren().add(TwosStr);
@@ -133,6 +151,8 @@ public class middleScorePane extends Pane{
 		lowerButtonArea.getChildren().add(scoreLgStraight);
 		lowerButtonArea.getChildren().add(scoreYahtzee);
 		lowerButtonArea.getChildren().add(scoreChance);
+		
+		lowerButtonArea.setAlignment(Pos.BASELINE_RIGHT);
 		
 		lowerTextArea.getChildren().add(ThreeOfAKindStr);
 		lowerTextArea.getChildren().add(FourOfAKindStr);
@@ -164,7 +184,20 @@ public class middleScorePane extends Pane{
 		this.getChildren().add(primeMiddleHBox);
 				
 		scoreAces.setOnAction(processAcesScore);
-		
+		scoreTwos.setOnAction(processTwosScore);
+		scoreThrees.setOnAction(processThreesScore);
+		scoreFours.setOnAction(processFoursScore);
+		scoreFives.setOnAction(processFivesScore);
+		scoreSixes.setOnAction(processSixesScore);
+
+		scoreThreeOfAKind.setOnAction(processThreeOfAKindScore);
+		scoreFourOfAKind.setOnAction(processFourOfAKindScore);
+		scoreFullHouse.setOnAction(processFullHouseScore);
+		scoreSmStraight.setOnAction(processSmStraightScore);
+		scoreLgStraight.setOnAction(processSixesScore);
+		scoreYahtzee.setOnAction(processYahtzeeScore);
+		scoreChance.setOnAction(processChanceScore);
+
 
 		
 	}
@@ -181,8 +214,8 @@ public class middleScorePane extends Pane{
 	 */
 	public void setAces(int aces) {
 		Aces = aces;
-		String tempString = AcesStr.getText();
-		AcesStr.setText(tempString+ Aces+"\n");
+		//String tempString = AcesStr.getText();
+		AcesStr.setText(ACESSTR+ Aces+"\n");
 				
 	}
 
@@ -376,6 +409,13 @@ public class middleScorePane extends Pane{
 		String tempString = SmStraightStr.getText();
 		SmStraightStr.setText(tempString+ SmStraight +"\n");
 	}
+	
+	public void scratchSmStraight() {
+		SmStraight = 0;
+		String tempString = SmStraightStr.getText();
+		SmStraightStr.setText(tempString+ SmStraight +"\n");
+		
+	}
 
 	/**
 	 * @return the lgStraight
@@ -392,6 +432,12 @@ public class middleScorePane extends Pane{
 		String tempString = LgStraightStr.getText();
 		LgStraightStr.setText(tempString+ LgStraight +"\n");
 	}
+	
+	public void scratchLgStraight() {
+		LgStraight = 0;
+		String tempString = LgStraightStr.getText();
+		LgStraightStr.setText(tempString+ LgStraight +"\n");
+	}
 
 	/**
 	 * @return the Yahtzee
@@ -405,6 +451,12 @@ public class middleScorePane extends Pane{
 	 */
 	public void setYahtzee() {
 		Yahtzee = 50;
+		String tempString = YahtzeeStr.getText();
+		YahtzeeStr.setText(tempString+ Yahtzee +"\n");
+	}
+	
+	public void scratchYahtzee() {
+		Yahtzee = 0;
 		String tempString = YahtzeeStr.getText();
 		YahtzeeStr.setText(tempString+ Yahtzee +"\n");
 	}
@@ -475,12 +527,19 @@ public class middleScorePane extends Pane{
 		updateGameTotal();
 		return GameTotal;
 	}
+	
+	protected static int internalGameTotal() {
+		return GameTotal;
+
+	}
 
 	/**
 	 * @param gameTotal the gameTotal to set
 	 */
+	
+	//FIXME  this is Broken cause ti deosnt work after being called be each button event
 	public void updateGameTotal() {
-		if (GameTotal == (getUpperSubTotal() + getLowerSubTotal())) {
+		if (GameTotal != 0 && GameTotal == (getUpperSubTotal() + getLowerSubTotal())) {
 			
 		}
 		else {
@@ -496,7 +555,221 @@ public class middleScorePane extends Pane{
 	
 	EventHandler<ActionEvent> processAcesScore = new EventHandler<ActionEvent>() {
 		public void handle(ActionEvent e) {
-			System.out.println("Button Pushed");
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				if (die.getSide() == 1){
+					numberToReturn += 1;
+				}
+			}
+			setAces(numberToReturn);
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processTwosScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				if (die.getSide() == 2){
+					numberToReturn += 2;
+				}
+			}
+			setTwos(numberToReturn);
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processThreesScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				if (die.getSide() == 3){
+					numberToReturn += 3;
+				}
+			}
+			setThrees(numberToReturn);
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processFoursScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				if (die.getSide() == 4){
+					numberToReturn += 4;
+				}
+			}
+			setFours(numberToReturn);
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processFivesScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				if (die.getSide() == 5){
+					numberToReturn += 5;
+				}
+			}
+			setFives(numberToReturn);
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processSixesScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				if (die.getSide() == 6){
+					numberToReturn += 6;
+				}
+			}
+			setSixes(numberToReturn);
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processThreeOfAKindScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				numberToReturn += die.getSide();
+			}
+			setThreeOfAKind(numberToReturn);
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processFourOfAKindScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				numberToReturn += die.getSide();
+			}
+			setFourOfAKind(numberToReturn);
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processFullHouseScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			//FIXME Need too Implement Check for Full House. Record regardless. 
+			
+			setFullHouse();
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processSmStraightScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				numberToReturn += die.getSide();
+			}
+			if (numberToReturn >= 10 && numberToReturn <= 18) {
+				setSmStraight();
+			}
+			else {
+				scratchSmStraight();
+			}
+			// 10 Low 18 High
+			updateGameTotal();		
+			rightRollPane.resetRollCount();
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processLgStraightScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+				numberToReturn += die.getSide();
+			}
+			if (numberToReturn == 15 || numberToReturn == 20) {
+				setLgStraight();
+			}
+			else {
+				scratchLgStraight();
+			}
+			// 10 Low 18 High
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+		}
+		
+	};
+	
+	EventHandler<ActionEvent> processYahtzeeScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			if (LeftDicePane.Dice.get(0).getSide() == LeftDicePane.Dice.get(1).getSide() && LeftDicePane.Dice.get(0).getSide() == LeftDicePane.Dice.get(2).getSide() && LeftDicePane.Dice.get(0).getSide() == LeftDicePane.Dice.get(3).getSide() && LeftDicePane.Dice.get(0).getSide() == LeftDicePane.Dice.get(4).getSide()) {
+				if (getYahtzee() == 0) {
+					setYahtzee();
+				}
+				else {
+					int numberToReturn = 0;
+					for (GUIdie die : LeftDicePane.Dice) {
+						numberToReturn += die.getSide();
+					}
+					setYahtzeeBouns();
+				}
+			}
+			else {
+				scratchYahtzee();
+			}
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+		}
+		
+		//Once the ScoreYahtzee Button is pressed it Updates the Button to Say Score Yahzee bonus. AR
+		//Also have to figure out how to show to prompt another score. 
+	};
+	
+	EventHandler<ActionEvent> processChanceScore = new EventHandler<ActionEvent>() {
+		public void handle(ActionEvent e) {
+			
+			int numberToReturn = 0;
+			for (GUIdie die : LeftDicePane.Dice) {
+					numberToReturn += die.getSide();
+			}
+			setChance(numberToReturn);
+			updateGameTotal();
+			rightRollPane.resetRollCount();
+
 		}
 		
 	};
