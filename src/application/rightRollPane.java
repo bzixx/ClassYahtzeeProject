@@ -3,6 +3,8 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -19,9 +21,15 @@ public class rightRollPane extends Pane {
 
 	private static final String REMAININGROLLS = "Rolls Remaining: ";
 	private static Text remainingRolls;
+	
+	protected static int scoreButtonsPushed = 0;
 
 	private TextField gameScoreName;
 	private TextArea highScores;
+	private VBox mainRightVBox;
+	private Label nameLabel = new Label("Enter Name: ");
+	private Button recordHighScore;
+	private Button restartGame;
 
 	public rightRollPane() {
 
@@ -30,35 +38,44 @@ public class rightRollPane extends Pane {
 
 		this.setStyle("-fx-background-color: #AA45F6;");
 
-		VBox mainRightVBox = new VBox();
+		mainRightVBox = new VBox();
+		mainRightVBox.setAlignment(Pos.CENTER);
+		mainRightVBox.setSpacing(15);
+		mainRightVBox.setPadding(new Insets(10.0, 0, 10.0, 0));
+		
 
-		Font rollButtonFont = new Font("Wingding", 36);
+		Font rollButtonFont = new Font("Arial", 36);
+		Font SecondaryFont = new Font("Arial", 24);
 		Button rollButton = new Button("Roll!");
 		rollButton.setOnAction(processRollButton);
 		rollButton.setMinSize(200, 100);
 		rollButton.setFont(rollButtonFont);
 
 		// The Lines Below should appear after all the Scoring Buttons are gone.
-		Button recordHighScore = new Button("Record High Score!");
+		recordHighScore = new Button("Record High Score!");
 		recordHighScore.setOnAction(processHighScoreButton);
+		recordHighScore.setFont(SecondaryFont);
+
 
 		gameScoreName = new TextField();
-		Label nameLabel = new Label("Enter Name: ");
+		
 
 		remainingRolls = new Text(REMAININGROLLS + rollCount);
+		remainingRolls.setFont(SecondaryFont);
 		highScores = new TextArea();
 		highScores.appendText("High Scores: \n");
 		highScores.setEditable(false);
+		highScores.setMaxWidth(333);
 		
-		Button restartGame = new Button("Start a new game!");
+		nameLabel.setFont(SecondaryFont);
+
+		restartGame = new Button("Start a new game!");
 		restartGame.setOnAction(processResetGameButton);
+		restartGame.setFont(SecondaryFont);
+
 
 		mainRightVBox.getChildren().add(rollButton);
 		mainRightVBox.getChildren().add(remainingRolls);
-
-		mainRightVBox.getChildren().add(nameLabel);
-		mainRightVBox.getChildren().add(gameScoreName);
-		mainRightVBox.getChildren().add(recordHighScore);
 
 		mainRightVBox.getChildren().add(highScores);
 
@@ -89,6 +106,15 @@ public class rightRollPane extends Pane {
 				}
 				rollCount = rollCount - 1;
 				remainingRolls.setText(REMAININGROLLS + rollCount);
+				System.out.println(scoreButtonsPushed);
+				if (scoreButtonsPushed >= 12) {
+					try {
+					showHighScore();
+					showResetButton();
+					}catch(Exception someExceptionToDoNothingWith) {
+						//Do Nothing.  I just didn't Want to Change logic
+					}
+				}
 			}
 		}
 
@@ -96,15 +122,32 @@ public class rightRollPane extends Pane {
 
 	EventHandler<ActionEvent> processHighScoreButton = new EventHandler<ActionEvent>() {
 		public void handle(ActionEvent e) {
-			highScores.appendText(gameScoreName.getText() + " scored " + Main.middleScorePane.getGameTotal() + "\n");
-
+			if (!(gameScoreName.getText().equals(""))) {
+				highScores.appendText(gameScoreName.getText() + " scored " + YahtzeeMain.middleScorePane.getGameTotal() + "\n");
+			}
 		}
 	};
 	
 	EventHandler<ActionEvent> processResetGameButton = new EventHandler<ActionEvent>() {
 		public void handle(ActionEvent e) {
-			
-			
+			YahtzeeMain.middleScorePane.activateScoreButtonsAgain();
+			YahtzeeMain.middleScorePane.resetScoreboard();
+			scoreButtonsPushed = 0;
+			mainRightVBox.getChildren().remove(nameLabel);
+			mainRightVBox.getChildren().remove(gameScoreName);
+			mainRightVBox.getChildren().remove(recordHighScore);
+			mainRightVBox.getChildren().remove(restartGame);
 		}
 	};
+	
+	private void showResetButton() {
+		mainRightVBox.getChildren().add(restartGame);
+	}
+	
+	private void showHighScore() {
+		mainRightVBox.getChildren().add(nameLabel);
+		mainRightVBox.getChildren().add(gameScoreName);
+		mainRightVBox.getChildren().add(recordHighScore);
+		
+	}
 }

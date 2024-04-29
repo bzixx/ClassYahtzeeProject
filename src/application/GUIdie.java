@@ -140,14 +140,14 @@ public class GUIdie extends Button {
 			locked = true;
 			currentDieSide.setImage(lockedDice.get(currentValue - 1));
 			// TODO REMEBER TO COMMENT OUT SYSTEM.OUT.PRINT
-			System.out.println("PUSHED BUTTON");
+			//System.out.println("PUSHED BUTTON");
 			this.setGraphic(currentDieSide);
 
 		} else {
 			locked = false;
 			currentDieSide.setImage(unlockedDice.get(currentValue - 1));
 			// TODO REMEBER TO COMMENT OUT SYSTEM.OUT.PRINT
-			System.out.println("UNPUSHED BUTTON");
+			//System.out.println("UNPUSHED BUTTON");
 			this.setGraphic(currentDieSide);
 		}
 	}

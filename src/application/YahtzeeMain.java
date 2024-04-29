@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class YahtzeeMain extends Application {
 
 	protected static middleScorePane middleScorePane;
 
@@ -68,7 +68,7 @@ public class Main extends Application {
 			// Text hello = new Text(50,20, "Hello, JavaFX!");
 			// Text question = new Text(120,80,"How's it going?");
 			// Group root = new Group(hello, question);
-			Scene scene = new Scene(root, 1000, 562, Color.LIGHTGREEN);
+			Scene scene = new Scene(root, 999, 562, Color.LIGHTGREEN);
 
 			// Font myNewFont = new Font("Times",12);
 

@@ -234,11 +234,6 @@ public class middleScorePane extends Pane {
 		AcesStr.setText(ACESSTR + Aces + "\n");
 
 	}
-	
-	public void resetAces() {
-		AcesStr.setText(ACESSTR);
-
-	}
 
 	/**
 	 * @return the twos
@@ -605,6 +600,8 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreAces.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 
 		}
@@ -627,6 +624,8 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreTwos.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 
 		}
@@ -649,6 +648,8 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreThrees.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 
 		}
@@ -671,6 +672,8 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreFours.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 
 		}
@@ -693,6 +696,8 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreFives.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 
 			}
 
@@ -716,6 +721,7 @@ public class middleScorePane extends Pane {
 				scoreSixes.setDisable(true);
 
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
 
 			}
 
@@ -767,7 +773,7 @@ public class middleScorePane extends Pane {
 				boolean isThreeMatching = false;
 
 				for (int number : countedDice) {
-					if (number == 3) {
+					if (number >= 3) {
 						isThreeMatching = true;
 					}
 				}
@@ -788,6 +794,8 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreThreeOfAKind.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 		}
 
@@ -837,7 +845,7 @@ public class middleScorePane extends Pane {
 				boolean isFourMatching = false;
 
 				for (int number : countedDice) {
-					if (number == 4) {
+					if (number >= 4) {
 						isFourMatching = true;
 					}
 				}
@@ -856,6 +864,8 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreFourOfAKind.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 		}
 
@@ -920,12 +930,14 @@ public class middleScorePane extends Pane {
 				if (isTwoMatching && isThreeMatching) {
 					setFullHouse();
 				} else {
-					scratchSmStraight();
+					scratchFullHouse();
 				}
 
 				updateGameTotal();
 				scoreFullHouse.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 		}
 
@@ -981,6 +993,8 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreSmStraight.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 		}
 
@@ -1005,6 +1019,8 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreLgStraight.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 		}
 
@@ -1023,12 +1039,19 @@ public class middleScorePane extends Pane {
 						setYahtzee();
 					} else {
 						setYahtzeeBouns();
+						rightRollPane.resetRollCount();
+						rightRollPane.scoreButtonsPushed++;
 					}
 				} else {
 					scratchYahtzee();
 				}
 				updateGameTotal();
-				rightRollPane.resetRollCount();
+				if (getYahtzeeBouns() == 0) {
+					rightRollPane.resetRollCount();
+					rightRollPane.scoreButtonsPushed++;
+				}
+				
+
 			}
 		}
 
@@ -1051,10 +1074,55 @@ public class middleScorePane extends Pane {
 				updateGameTotal();
 				scoreChance.setDisable(true);
 				rightRollPane.resetRollCount();
+				rightRollPane.scoreButtonsPushed++;
+
 			}
 
 		}
 
 	};
+	
+	protected void activateScoreButtonsAgain() {
+		scoreAces.setDisable(false);
+		scoreTwos.setDisable(false);
+		scoreThrees.setDisable(false);
+		scoreFours.setDisable(false);
+		scoreFives.setDisable(false);
+		scoreSixes.setDisable(false);
+
+		scoreThreeOfAKind.setDisable(false);
+		scoreFourOfAKind.setDisable(false);
+		scoreFullHouse.setDisable(false);
+		scoreSmStraight.setDisable(false);
+		scoreLgStraight.setDisable(false);
+		scoreYahtzee.setDisable(false);
+		scoreChance.setDisable(false);
+		
+	}
+	
+	protected void resetScoreboard() {
+		AcesStr.setText(ACESSTR);
+		TwosStr.setText(TWOSSTR);
+		ThreesStr.setText(THREESSTR);
+		FoursStr.setText(FOURSSTR);
+		FivesStr.setText(FIVESSTR);
+		SixesStr.setText(SIXESSTR);
+		UpperBounsStr.setText(UPPERBOUNSSTR);
+		upperSubTotalStr.setText(UPPERSUBTOTALSTR);
+		ThreeOfAKindStr.setText(THREEOFAKINDSTR);
+		FourOfAKindStr.setText(FOUROFAKINDSTR);
+		FullHouseStr.setText(FULLHOUSESTR);
+		SmStraightStr.setText(SMSTRAIGHTSTR);
+		LgStraightStr.setText(LGSTRAIGHTSTR);
+		YahtzeeStr.setText(YAHTZEESTR);
+		YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR);
+		ChanceStr.setText(CHANCESTR);
+		lowerSubTotalStr.setText(LOWERSUBTOTALSTR);
+		GameTotalStr.setText(GAMETOTALSTR);
+
+
+
+		
+	}
 
 }
