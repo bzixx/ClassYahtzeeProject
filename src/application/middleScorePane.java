@@ -185,6 +185,8 @@ public class middleScorePane extends Pane {
 		ScoreBoardVBox = new VBox();
 		scoreButtonVBox = new VBox();
 		scoreButtonVBox.setSpacing(10);
+		
+		primeMiddleHBox.setSpacing(45);
 
 		ScoreBoardVBox.setPadding(new Insets(10.0));
 		scoreButtonVBox.setPadding(new Insets(10.0));
@@ -1102,23 +1104,41 @@ public class middleScorePane extends Pane {
 	
 	protected void resetScoreboard() {
 		AcesStr.setText(ACESSTR);
+		Aces = 0;
 		TwosStr.setText(TWOSSTR);
+		Twos = 0;
 		ThreesStr.setText(THREESSTR);
+		Threes = 0;
 		FoursStr.setText(FOURSSTR);
+		Fours = 0;
 		FivesStr.setText(FIVESSTR);
+		Fives = 0;
 		SixesStr.setText(SIXESSTR);
+		Sixes = 0;
 		UpperBounsStr.setText(UPPERBOUNSSTR);
+		UpperBouns = 0;
 		upperSubTotalStr.setText(UPPERSUBTOTALSTR);
+		upperSubTotal= 0;
 		ThreeOfAKindStr.setText(THREEOFAKINDSTR);
+		ThreeOfAKind = 0;
 		FourOfAKindStr.setText(FOUROFAKINDSTR);
+		FourOfAKind = 0;
 		FullHouseStr.setText(FULLHOUSESTR);
+		FullHouse = 0;
 		SmStraightStr.setText(SMSTRAIGHTSTR);
+		SmStraight = 0;
 		LgStraightStr.setText(LGSTRAIGHTSTR);
+		LgStraight = 0;
 		YahtzeeStr.setText(YAHTZEESTR);
+		Yahtzee = 0;
 		YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR);
+		YahtzeeBouns = 0;
 		ChanceStr.setText(CHANCESTR);
+		Chance = 0;
 		lowerSubTotalStr.setText(LOWERSUBTOTALSTR);
+		lowerSubTotal = 0;
 		GameTotalStr.setText(GAMETOTALSTR);
+		GameTotal = 0;
 
 
 

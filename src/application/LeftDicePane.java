@@ -19,7 +19,7 @@ public class LeftDicePane extends Pane {
 	private HBox mainLeftHBox;
 	
 	private Text YahtzeeName = new Text("Y\na\nh\nt\nz\ne\ne");
-	private Text GUIdieText = new Text("Y\na\nh\nt\nz\ne\ne");
+	private Text GUIdieText = new Text("Click\nTo\nLock\nDie\n\nDies\nLocked\nWith\nRed\nWill\nBe\nHeld\nBetween\nRolls");
 
 	// Created New GLobal GUI dies that can then be added to the Array List and
 	// Shipped off to other classes when needed.
@@ -42,11 +42,14 @@ public class LeftDicePane extends Pane {
 		this.setStyle("-fx-background-color: Red;");
 		
 		Font YahtzeeFont = new Font("Arial", 70);
+		Font InstructionFont = new Font("Arial", 24);
 		
 		YahtzeeName.setFont(YahtzeeFont);
 		YahtzeeName.setFill(Color.DARKORANGE);
 		YahtzeeName.setStroke(Color.ORANGE);
 		YahtzeeName.setStrokeWidth(3);
+		
+		GUIdieText.setFont(InstructionFont);
 		
 		
 		die1 = new GUIdie();
@@ -90,6 +93,9 @@ public class LeftDicePane extends Pane {
 		
 		mainLeftHBox.getChildren().add(nameVBox);
 		mainLeftHBox.getChildren().add(diceVBox);
+		mainLeftHBox.getChildren().add(GUIdieText);
+		
+		mainLeftHBox.setSpacing(40);
 		
 		nameVBox.getChildren().add(YahtzeeName);
 				

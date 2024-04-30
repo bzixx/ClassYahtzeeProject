@@ -106,7 +106,7 @@ public class rightRollPane extends Pane {
 				}
 				rollCount = rollCount - 1;
 				remainingRolls.setText(REMAININGROLLS + rollCount);
-				System.out.println(scoreButtonsPushed);
+				//System.out.println(scoreButtonsPushed);
 				if (scoreButtonsPushed >= 12) {
 					try {
 					showHighScore();
@@ -124,7 +124,9 @@ public class rightRollPane extends Pane {
 		public void handle(ActionEvent e) {
 			if (!(gameScoreName.getText().equals(""))) {
 				highScores.appendText(gameScoreName.getText() + " scored " + YahtzeeMain.middleScorePane.getGameTotal() + "\n");
+				mainRightVBox.getChildren().remove(recordHighScore);
 			}
+			
 		}
 	};
 	
@@ -132,7 +134,13 @@ public class rightRollPane extends Pane {
 		public void handle(ActionEvent e) {
 			YahtzeeMain.middleScorePane.activateScoreButtonsAgain();
 			YahtzeeMain.middleScorePane.resetScoreboard();
+			for (GUIdie die : LeftDicePane.Dice) {
+				die.unlockDie();
+			}
+			rollCount = 3;
+			remainingRolls.setText(REMAININGROLLS + rollCount);
 			scoreButtonsPushed = 0;
+			gameScoreName.setText("");
 			mainRightVBox.getChildren().remove(nameLabel);
 			mainRightVBox.getChildren().remove(gameScoreName);
 			mainRightVBox.getChildren().remove(recordHighScore);
