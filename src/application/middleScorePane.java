@@ -1,7 +1,8 @@
 package application;
 
-import javafx.event.ActionEvent;
+import java.util.ArrayList;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,76 +15,76 @@ import javafx.scene.text.Text;
 public class middleScorePane extends Pane {
 
 	private int Aces;
-	private Text AcesStr = new Text("Aces:                       |");
-	private final String ACESSTR = "Aces:                       |";
+	private Text AcesStr = new Text("Aces:");
+	private final String ACESSTR = "Aces:";
 
 	private int Twos;
-	private Text TwosStr = new Text("Twos:                      |");
-	private final String TWOSSTR = "Twos:                      |";
+	private Text TwosStr = new Text("Twos:");
+	private final String TWOSSTR = "Twos:";
 
 	private int Threes;
-	private Text ThreesStr = new Text("Threes:                   |");
-	private final String THREESSTR = "Threes:                   |";
+	private Text ThreesStr = new Text("Threes:");
+	private final String THREESSTR = "Threes:";
 
 	private int Fours;
-	private Text FoursStr = new Text("Fours:                      |");
-	private final String FOURSSTR = "Fours:                      |";
+	private Text FoursStr = new Text("Fours:");
+	private final String FOURSSTR = "Fours:";
 
 	private int Fives;
-	private Text FivesStr = new Text("Fives:                       | ");
-	private final String FIVESSTR = "Fives:                       | ";
+	private Text FivesStr = new Text("Fives: ");
+	private final String FIVESSTR = "Fives: ";
 
 	private int Sixes;
-	private Text SixesStr = new Text("Sixes:                       | ");
-	private final String SIXESSTR = "Sixes:                       | ";
+	private Text SixesStr = new Text("Sixes: ");
+	private final String SIXESSTR = "Sixes: ";
 
 	private int upperSubTotal;
-	private Text upperSubTotalStr = new Text("Upper SubTotal: | ");
-	private final String UPPERSUBTOTALSTR = "Upper SubTotal: | ";
+	private Text upperSubTotalStr = new Text("Upper SubTotal: ");
+	private final String UPPERSUBTOTALSTR = "Upper SubTotal: ";
 
 	private int UpperBouns;
-	private Text UpperBounsStr = new Text("Upper Bonus:       | ");
-	private final String UPPERBOUNSSTR = "Upper Bonus:       | ";
+	private Text UpperBounsStr = new Text("Upper Bonus: ");
+	private final String UPPERBOUNSSTR = "Upper Bonus: ";
 
 	private int ThreeOfAKind;
-	private Text ThreeOfAKindStr = new Text("3 of Kind:                | ");
-	private final String THREEOFAKINDSTR = "3 of Kind:                | ";
+	private Text ThreeOfAKindStr = new Text("\n3 of Kind: ");
+	private final String THREEOFAKINDSTR = "3 of Kind: ";
 
 	private int FourOfAKind;
-	private Text FourOfAKindStr = new Text("4 of Kind:                | ");
-	private final String FOUROFAKINDSTR = "4 of Kind:                | ";
+	private Text FourOfAKindStr = new Text("4 of Kind: ");
+	private final String FOUROFAKINDSTR = "4 of Kind: ";
 
 	private int FullHouse;
-	private Text FullHouseStr = new Text("Full House:             | ");
-	private final String FULLHOUSESTR = "Full House:             | ";
+	private Text FullHouseStr = new Text("Full House: ");
+	private final String FULLHOUSESTR = "Full House: ";
 
 	private int SmStraight;
-	private Text SmStraightStr = new Text("Small Straight:      | ");
-	private final String SMSTRAIGHTSTR = "Small Straight:      | ";
+	private Text SmStraightStr = new Text("Small Straight: ");
+	private final String SMSTRAIGHTSTR = "Small Straight: ";
 
 	private int LgStraight;
-	private Text LgStraightStr = new Text("Large Straight:      | ");
-	private final String LGSTRAIGHTSTR = "Large Straight:      | ";
+	private Text LgStraightStr = new Text("Large Straight: ");
+	private final String LGSTRAIGHTSTR = "Large Straight: ";
 
 	private int Yahtzee;
-	private Text YahtzeeStr = new Text("Yahtzee:                  | ");
-	private final String YAHTZEESTR = "Yahtzee:                  | ";
+	private Text YahtzeeStr = new Text("Yahtzee: ");
+	private final String YAHTZEESTR = "Yahtzee: ";
 
 	private int YahtzeeBouns;
-	private Text YahtzeeBounsStr = new Text("Yahtzee Bonus:    | ");
-	private final String YAHTZEEBOUNSSTR = "Yahtzee Bonus:    | ";
+	private Text YahtzeeBounsStr = new Text("Yahtzee Bonus: ");
+	private final String YAHTZEEBOUNSSTR = "Yahtzee Bonus: ";
 
 	private int Chance;
-	private Text ChanceStr = new Text("Chance:                   | ");
-	private final String CHANCESTR = "Chance:                   | ";
+	private Text ChanceStr = new Text("Chance: ");
+	private final String CHANCESTR = "Chance: ";
 
 	private int lowerSubTotal;
-	private Text lowerSubTotalStr = new Text("Lower SubTotal:  | ");
-	private final String LOWERSUBTOTALSTR = "Lower SubTotal:  | ";
+	private Text lowerSubTotalStr = new Text("Lower SubTotal: ");
+	private final String LOWERSUBTOTALSTR = "Lower SubTotal: ";
 
 	private int GameTotal;
-	private Text GameTotalStr = new Text("Game Total:           | ");
-	private final String GAMETOTALSTR = "Game Total:           | ";
+	private Text GameTotalStr = new Text("\nGame Total: ");
+	private final String GAMETOTALSTR = "Game Total: ";
 
 	private HBox primeMiddleHBox;
 
@@ -109,12 +110,14 @@ public class middleScorePane extends Pane {
 	private Button scoreLgStraight = new Button("Score Large Staight");
 	private Button scoreYahtzee = new Button("Score Yahtzee");
 	private Button scoreChance = new Button("Score Chance");
+	
+	protected static ArrayList<Button> scoreButtonList = new ArrayList<Button>();
 
 	public middleScorePane() {
 		this.setMinWidth(333);
-		this.setMinHeight(562);
+		this.setMinHeight(570);
 
-		this.setStyle("-fx-background-color: white;");
+		this.setStyle("-fx-background-color: lightyellow;");
 
 		/*
 		 * scoreTwos.setOnAction(scoreTwos::processAcesScore);
@@ -217,6 +220,21 @@ public class middleScorePane extends Pane {
 		scoreLgStraight.setOnAction(processLgStraightScore);
 		scoreYahtzee.setOnAction(processYahtzeeScore);
 		scoreChance.setOnAction(processChanceScore);
+		
+		scoreButtonList.add(scoreAces);
+		scoreButtonList.add(scoreTwos);
+		scoreButtonList.add(scoreThrees);
+		scoreButtonList.add(scoreFours);
+		scoreButtonList.add(scoreFives);
+		scoreButtonList.add(scoreSixes);
+		scoreButtonList.add(scoreThreeOfAKind);
+		scoreButtonList.add(scoreFourOfAKind);
+		scoreButtonList.add(scoreFullHouse);
+		scoreButtonList.add(scoreSmStraight);
+		scoreButtonList.add(scoreLgStraight);
+		scoreButtonList.add(scoreYahtzee);
+		scoreButtonList.add(scoreChance);
+		
 
 	}
 
@@ -233,7 +251,7 @@ public class middleScorePane extends Pane {
 	public void setAces(int aces) {
 		Aces = aces;
 		// String tempString = AcesStr.getText();
-		AcesStr.setText(ACESSTR + Aces + "\n");
+		AcesStr.setText(ACESSTR + " " + Aces);
 
 	}
 
@@ -250,7 +268,7 @@ public class middleScorePane extends Pane {
 	public void setTwos(int twos) {
 		Twos = twos;
 		// String tempString = TwosStr.getText();
-		TwosStr.setText(TWOSSTR + Twos + "\n");
+		TwosStr.setText(TWOSSTR + " " + Twos);
 
 	}
 
@@ -267,7 +285,7 @@ public class middleScorePane extends Pane {
 	public void setThrees(int threes) {
 		Threes = threes;
 		// String tempString = ThreesStr.getText();
-		ThreesStr.setText(THREESSTR + Threes + "\n");
+		ThreesStr.setText(THREESSTR + " " + Threes);
 	}
 
 	/**
@@ -283,7 +301,7 @@ public class middleScorePane extends Pane {
 	public void setFours(int fours) {
 		Fours = fours;
 		// String tempString = FoursStr.getText();
-		FoursStr.setText(FOURSSTR + Fours + "\n");
+		FoursStr.setText(FOURSSTR + " " + Fours);
 	}
 
 	/**
@@ -299,7 +317,7 @@ public class middleScorePane extends Pane {
 	public void setFives(int fives) {
 		Fives = fives;
 		// String tempString = FivesStr.getText();
-		FivesStr.setText(FIVESSTR + Fives + "\n");
+		FivesStr.setText(FIVESSTR + " " + Fives);
 	}
 
 	/**
@@ -315,7 +333,7 @@ public class middleScorePane extends Pane {
 	public void setSixes(int sixes) {
 		Sixes = sixes;
 		// String tempString = SixesStr.getText();
-		SixesStr.setText(SIXESSTR + Sixes + "\n");
+		SixesStr.setText(SIXESSTR + " " + Sixes);
 	}
 
 	/**
@@ -340,7 +358,7 @@ public class middleScorePane extends Pane {
 		updateUpperBouns();
 		upperSubTotal = getAces() + getTwos() + getThrees() + getFours() + getFives() + getSixes() + getUpperBouns();
 		// String tempString = upperSubTotalStr.getText();
-		upperSubTotalStr.setText(UPPERSUBTOTALSTR + upperSubTotal + "\n");
+		upperSubTotalStr.setText(UPPERSUBTOTALSTR + " " + upperSubTotal);
 		// }
 
 	}
@@ -359,11 +377,11 @@ public class middleScorePane extends Pane {
 		if ((Aces + Twos + Threes + Fours + Fives + Sixes) >= 63) {
 			UpperBouns = 35;
 			// String tempString = UpperBounsStr.getText();
-			UpperBounsStr.setText(UPPERBOUNSSTR + UpperBouns + "\n");
+			UpperBounsStr.setText(UPPERBOUNSSTR + " " + UpperBouns);
 		} else {
 			UpperBouns = 0;
 			// String tempString = UpperBounsStr.getText();
-			UpperBounsStr.setText(UPPERBOUNSSTR + UpperBouns + "\n");
+			UpperBounsStr.setText(UPPERBOUNSSTR + " " + UpperBouns);
 		}
 
 	}
@@ -381,7 +399,7 @@ public class middleScorePane extends Pane {
 	public void setThreeOfAKind(int threeOfAKind) {
 		ThreeOfAKind = threeOfAKind;
 		// String tempString = ThreeOfAKindStr.getText();
-		ThreeOfAKindStr.setText(THREEOFAKINDSTR + ThreeOfAKind + "\n");
+		ThreeOfAKindStr.setText("\n" + THREEOFAKINDSTR + " " + ThreeOfAKind );
 	}
 
 	/**
@@ -397,7 +415,7 @@ public class middleScorePane extends Pane {
 	public void setFourOfAKind(int fourOfAKind) {
 		FourOfAKind = fourOfAKind;
 		// String tempString = FourOfAKindStr.getText();
-		FourOfAKindStr.setText(FOUROFAKINDSTR + FourOfAKind + "\n");
+		FourOfAKindStr.setText(FOUROFAKINDSTR + " " + FourOfAKind);
 	}
 
 	/**
@@ -412,13 +430,13 @@ public class middleScorePane extends Pane {
 	public void setFullHouse() {
 		FullHouse = 25;
 		// String tempString = FullHouseStr.getText();
-		FullHouseStr.setText(FULLHOUSESTR + FullHouse + "\n");
+		FullHouseStr.setText(FULLHOUSESTR + " " + FullHouse);
 	}
 
 	public void scratchFullHouse() {
 		FullHouse = 0;
 		// String tempString = FullHouseStr.getText();
-		FullHouseStr.setText(FULLHOUSESTR + FullHouse + "\n");
+		FullHouseStr.setText(FULLHOUSESTR + " " + FullHouse);
 	}
 
 	/**
@@ -434,13 +452,13 @@ public class middleScorePane extends Pane {
 	public void setSmStraight() {
 		SmStraight = 30;
 		// String tempString = SmStraightStr.getText();
-		SmStraightStr.setText(SMSTRAIGHTSTR + SmStraight + "\n");
+		SmStraightStr.setText(SMSTRAIGHTSTR + " " + SmStraight);
 	}
 
 	public void scratchSmStraight() {
 		SmStraight = 0;
 		// String tempString = SmStraightStr.getText();
-		SmStraightStr.setText(SMSTRAIGHTSTR + SmStraight + "\n");
+		SmStraightStr.setText(SMSTRAIGHTSTR + " " + SmStraight );
 
 	}
 
@@ -457,13 +475,13 @@ public class middleScorePane extends Pane {
 	public void setLgStraight() {
 		LgStraight = 40;
 		// String tempString = LgStraightStr.getText();
-		LgStraightStr.setText(LGSTRAIGHTSTR + LgStraight + "\n");
+		LgStraightStr.setText(LGSTRAIGHTSTR + " " + LgStraight);
 	}
 
 	public void scratchLgStraight() {
 		LgStraight = 0;
 		// String tempString = LgStraightStr.getText();
-		LgStraightStr.setText(LGSTRAIGHTSTR + LgStraight + "\n");
+		LgStraightStr.setText(LGSTRAIGHTSTR + " " + LgStraight);
 	}
 
 	/**
@@ -479,18 +497,18 @@ public class middleScorePane extends Pane {
 	public void setYahtzee() {
 		Yahtzee = 50;
 		// String tempString = YahtzeeStr.getText();
-		YahtzeeStr.setText(YAHTZEESTR + Yahtzee + "\n");
+		YahtzeeStr.setText(YAHTZEESTR + " " + Yahtzee);
 	}
 
 	public void scratchYahtzee() {
 		if (getYahtzee() != 0) {
-			YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR + getYahtzeeBouns() + "\n");
+			YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR + " " + getYahtzeeBouns() );
 			scoreYahtzee.setDisable(true);
 		} else {
 			Yahtzee = 0;
 			// String tempString = YahtzeeStr.getText();
-			YahtzeeStr.setText(YAHTZEESTR + Yahtzee + "\n");
-			YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR + getYahtzeeBouns() + "\n");
+			YahtzeeStr.setText(YAHTZEESTR + " " + Yahtzee);
+			YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR + " " + getYahtzeeBouns());
 			scoreYahtzee.setDisable(true);
 		}
 
@@ -511,9 +529,9 @@ public class middleScorePane extends Pane {
 		// String tempString = YahtzeeBounsStr.getText();
 
 		if (YahtzeeBouns <= 1) {
-			YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR + getYahtzeeBouns() + "\n");
+			YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR + " " + getYahtzeeBouns());
 		} else {
-			YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR + getYahtzeeBouns() + "\n");
+			YahtzeeBounsStr.setText(YAHTZEEBOUNSSTR + " " + getYahtzeeBouns());
 		}
 	}
 
@@ -530,7 +548,7 @@ public class middleScorePane extends Pane {
 	public void setChance(int chance) {
 		Chance = chance;
 		// String tempString = ChanceStr.getText();
-		ChanceStr.setText(CHANCESTR + Chance + "\n");
+		ChanceStr.setText(CHANCESTR + " " + Chance);
 	}
 
 	/**
@@ -554,7 +572,7 @@ public class middleScorePane extends Pane {
 		lowerSubTotal = getThreeOfAKind() + getFourOfAKind() + getFullHouse() + getSmStraight() + getLgStraight()
 				+ getYahtzee() + getChance() + getYahtzeeBouns();
 		// String tempString = lowerSubTotalStr.getText();
-		lowerSubTotalStr.setText(LOWERSUBTOTALSTR + lowerSubTotal + "\n");
+		lowerSubTotalStr.setText(LOWERSUBTOTALSTR + " " + lowerSubTotal);
 		// }
 	}
 
@@ -581,7 +599,7 @@ public class middleScorePane extends Pane {
 		updateLowerSubTotal();
 		GameTotal = getUpperSubTotal() + getLowerSubTotal();
 		// String tempString = GameTotalStr.getText();
-		GameTotalStr.setText(GAMETOTALSTR + GameTotal + "\n");
+		GameTotalStr.setText("\n" + GAMETOTALSTR + " " + GameTotal);
 		// }
 
 	}
@@ -603,6 +621,9 @@ public class middleScorePane extends Pane {
 				scoreAces.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 
@@ -627,6 +648,9 @@ public class middleScorePane extends Pane {
 				scoreTwos.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 
@@ -651,6 +675,9 @@ public class middleScorePane extends Pane {
 				scoreThrees.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 
@@ -675,6 +702,9 @@ public class middleScorePane extends Pane {
 				scoreFours.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 
@@ -699,6 +729,9 @@ public class middleScorePane extends Pane {
 				scoreFives.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 
 			}
@@ -724,6 +757,9 @@ public class middleScorePane extends Pane {
 
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 
@@ -797,6 +833,9 @@ public class middleScorePane extends Pane {
 				scoreThreeOfAKind.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 		}
@@ -867,6 +906,9 @@ public class middleScorePane extends Pane {
 				scoreFourOfAKind.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 		}
@@ -939,6 +981,9 @@ public class middleScorePane extends Pane {
 				scoreFullHouse.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 		}
@@ -996,6 +1041,9 @@ public class middleScorePane extends Pane {
 				scoreSmStraight.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 		}
@@ -1022,6 +1070,9 @@ public class middleScorePane extends Pane {
 				scoreLgStraight.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				
+				YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 		}
@@ -1053,6 +1104,8 @@ public class middleScorePane extends Pane {
 					rightRollPane.scoreButtonsPushed++;
 				}
 				
+			YahtzeeMain.rightRollPane.checkIfDone();
+
 
 			}
 		}
@@ -1077,6 +1130,7 @@ public class middleScorePane extends Pane {
 				scoreChance.setDisable(true);
 				rightRollPane.resetRollCount();
 				rightRollPane.scoreButtonsPushed++;
+				YahtzeeMain.rightRollPane.checkIfDone();
 
 			}
 

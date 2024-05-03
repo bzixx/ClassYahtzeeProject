@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 public class YahtzeeMain extends Application {
 
 	protected static middleScorePane middleScorePane;
+	protected static rightRollPane rightRollPane;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -29,7 +30,7 @@ public class YahtzeeMain extends Application {
 
 			LeftDicePane leftDicePane = new LeftDicePane();
 			middleScorePane = new middleScorePane();
-			rightRollPane rightRollPane = new rightRollPane();
+			rightRollPane = new rightRollPane();
 
 			mainThreeDivs.getChildren().add(leftDicePane);
 			mainThreeDivs.getChildren().add(middleScorePane);
@@ -68,7 +69,7 @@ public class YahtzeeMain extends Application {
 			// Text hello = new Text(50,20, "Hello, JavaFX!");
 			// Text question = new Text(120,80,"How's it going?");
 			// Group root = new Group(hello, question);
-			Scene scene = new Scene(root, 999, 562, Color.LIGHTGREEN);
+			Scene scene = new Scene(root, 999, 570, Color.LIGHTGREEN);
 
 			// Font myNewFont = new Font("Times",12);
 

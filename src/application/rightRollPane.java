@@ -34,18 +34,20 @@ public class rightRollPane extends Pane {
 	public rightRollPane() {
 
 		this.setMinWidth(333);
-		this.setMinHeight(562);
+		this.setMinHeight(570);
 
-		this.setStyle("-fx-background-color: #AA45F6;");
+		this.setStyle("-fx-background-color: orange;");
 
 		mainRightVBox = new VBox();
 		mainRightVBox.setAlignment(Pos.CENTER);
-		mainRightVBox.setSpacing(15);
+		mainRightVBox.setSpacing(10);
 		mainRightVBox.setPadding(new Insets(10.0, 0, 10.0, 0));
 		
 
-		Font rollButtonFont = new Font("Arial", 36);
-		Font SecondaryFont = new Font("Arial", 24);
+		Font rollButtonFont = new Font("Trebuchet MS", 36);
+		Font SecondaryFont = new Font("Trebuchet MS", 24);
+		Font smallerFont = new Font("Trebuchet MS", 16);
+
 		Button rollButton = new Button("Roll!");
 		rollButton.setOnAction(processRollButton);
 		rollButton.setMinSize(200, 100);
@@ -63,6 +65,7 @@ public class rightRollPane extends Pane {
 		remainingRolls = new Text(REMAININGROLLS + rollCount);
 		remainingRolls.setFont(SecondaryFont);
 		highScores = new TextArea();
+		highScores.setFont(smallerFont);
 		highScores.appendText("High Scores: \n");
 		highScores.setEditable(false);
 		highScores.setMaxWidth(333);
@@ -105,16 +108,12 @@ public class rightRollPane extends Pane {
 					die.roll();
 				}
 				rollCount = rollCount - 1;
-				remainingRolls.setText(REMAININGROLLS + rollCount);
+				remainingRolls.setText(REMAININGROLLS + rollCount);				
+				
 				//System.out.println(scoreButtonsPushed);
-				if (scoreButtonsPushed >= 12) {
-					try {
-					showHighScore();
-					showResetButton();
-					}catch(Exception someExceptionToDoNothingWith) {
-						//Do Nothing.  I just didn't Want to Change logic
-					}
-				}
+				/*if (scoreButtonsPushed >= 12) {
+
+				}*/
 			}
 		}
 
@@ -157,5 +156,24 @@ public class rightRollPane extends Pane {
 		mainRightVBox.getChildren().add(gameScoreName);
 		mainRightVBox.getChildren().add(recordHighScore);
 		
+	}
+	
+	protected void checkIfDone() {
+		int amtDisabled = 0;
+		for (Button sumButton: middleScorePane.scoreButtonList) {
+			if (sumButton.isDisabled()) {
+				amtDisabled++;
+			}
+		}
+		if (amtDisabled == 13) {
+			try {
+			showHighScore();
+			showResetButton();
+			}catch(Exception someExceptionToDoNothingWith) {
+				//Do Nothing.  I just didn't Want to Change logic
+				//Actually, this shouldn't ever be called, but i didnt want to remove it. 
+			}
+			
+		}
 	}
 }
